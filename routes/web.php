@@ -25,3 +25,22 @@ Route::get('/test', function () {
 Route::get('/tictactoe', function () {
     return Inertia::render('Tictactoe');
 })->name('tictactoe');
+
+
+Route::get('/hello-teacher', function () {
+    return Inertia::render('HelloTeacher');
+})->name('hello-teacher');
+
+
+Route::get('/about-page', function () {
+    return Inertia::render('AboutPage');
+})->name('about-page');
+
+Route::get('/home-page', function () {
+    return Inertia::render('HomePage');
+})->name('home-page');
+
+
+Route::get('/bootstrap', function () {
+    return Inertia::render('BootstrapContent');
+})->name('bootstrap');
