@@ -3,8 +3,8 @@ import { Head } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function Circle() {
-    const [items, setItems] = useState([1,1,1,1,1,1,1,1]);
-    const [color, setColor] = useState("blue");
+    const [items, setItems] = useState([1,1,1,1,1,1,1,1,1]);
+    const [color, setColor] = useState("pink");
 
     const onPressButton = () => { setColor("red"); };  
 

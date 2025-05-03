@@ -65,3 +65,7 @@ Route::get('/list-manager', function () {
 Route::get('/infinite-scroll', function () {
     return Inertia::render('InfiniteScrollExample');
 })->name('infinite-scroll');
+
+Route::get('/VendingMachine',function () {
+    return Inertia::render('VendingMachine');
+})->name('VendingMachine.tsx');
