@@ -11,7 +11,7 @@ function Square({ value, onSquareClick }: any) {
 }
 
 function Board({ xIsNext, squares, onPlay }: any) {
-  function handleClick(i) {
+  function handleClick(i:any) {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }

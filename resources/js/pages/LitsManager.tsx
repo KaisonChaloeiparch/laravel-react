@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function ListManager() {
     const [items, setItems] = useState([]);
-    const addItem = () => {        setItems([...items, `Item ${items.length + 1}`]);    };
+    const addItem = () => {        setItems([...items, `Item ${items.length + 1  }`]);    };
     const removeItem = (index:any) => {        setItems(items.filter((_, i) => i !== index));    };
     return (
         <BootstrapLayout>
