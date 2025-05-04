@@ -71,8 +71,11 @@ export default function VendingMachine() {
         {change > 0 && <p className="mb-2 text-green-600">Change: {change} บาท</p>}
 
         <div className="mb-4 space-x-2">
+          <Button onClick={() => insertCoin(1)}>ใส่เหรียญ 1</Button>
+          <Button onClick={() => insertCoin(2)}>ใส่เหรียญ 2</Button>
           <Button onClick={() => insertCoin(5)}>ใส่เหรียญ 5</Button>
           <Button onClick={() => insertCoin(10)}>ใส่เหรียญ 10</Button>
+
         </div>
 
         <div className="grid grid-cols-3 gap-2">

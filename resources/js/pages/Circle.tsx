@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Circle() {
     const [items, setItems] = useState([1,1,1,1,1,1,1,1,1]);
-    const [color, setColor] = useState("pink");
+    const [color, setColor] = useState("blue");
 
     const onPressButton = () => { setColor("red"); };  
 
