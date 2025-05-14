@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\customer;
+use App\Models\popstore;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -69,3 +72,20 @@ Route::get('/infinite-scroll', function () {
 Route::get('/VendingMachine',function () {
     return Inertia::render('VendingMachine');
 })->name('VendingMachine.tsx');
+
+Route::get('/product', function () {
+    $products = Product::all();
+    return Inertia::render('ProductList', compact('products') );
+})->name('product');
+
+Route::get('/product-others', function () {
+    return Inertia::render('ProductOthers');
+})->name('product-others');
+
+Route::get('/popstore', function () {
+    $customer = popstore::all();
+    return Inertia::render('popstoreList', compact('popstores') );
+})->name('popstore');
+
+
+

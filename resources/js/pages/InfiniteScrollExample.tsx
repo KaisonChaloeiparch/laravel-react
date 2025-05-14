@@ -9,7 +9,7 @@ function InfiniteScrollExample() {
     const [hasMore, setHasMore] = useState(true); // ตรวจสอบว่ามีข้อมูลอีกไหม
 
     // ฟังก์ชัน fetch data
-    const fetchData = async (pageNum) => {
+    const fetchData = async (pageNum:any) => {
         setLoading(true);
         try {
             const response = await fetch(
@@ -20,7 +20,7 @@ function InfiniteScrollExample() {
             if (newData.length === 0) {
                 setHasMore(false); // ถ้าไม่มีข้อมูลใหม่ให้หยุดโหลด
             } else {
-                setData((prev) => [...prev, ...newData]); // รวมข้อมูลใหม่กับข้อมูลเดิม
+                setData( (prev) => [...prev, ...newData]); // รวมข้อมูลใหม่กับข้อมูลเดิม
             }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -64,7 +64,7 @@ function InfiniteScrollExample() {
                                     <h5 className="card-title">{item.title}</h5>
                                     <p className="card-text">{ item.body }</p>
                                 </div>
-                                <button className="btn btn-danger" onClick={() => removeItem(index)}> <i className="bi bi-trash"></i> Remove </button>
+                                <button className="btn btn-danger" onClick={() => removeItem (index)}> <i className="bi bi-trash"></i> Remove </button>
                             </div>
                         </div>
                     ))}
