@@ -2,6 +2,7 @@
 
 use App\Models\customer;
 use App\Models\popstore;
+use App\Models\PopstoreProduct;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -82,10 +83,25 @@ Route::get('/product-others', function () {
     return Inertia::render('ProductOthers');
 })->name('product-others');
 
-Route::get('/popstore', function () {
-    $customer = popstore::all();
-    return Inertia::render('popstoreList', compact('popstores') );
-})->name('popstore');
+Route::get('/popstore_product', function () {
+    $popstores = PopstoreProduct::all();
+    return Inertia::render('popstoreList', compact('popstores_product') );
+})->name('popstore_product');
+
+
+Route::get('/product-manager', function () {
+    $p = Product::all();
+    return Inertia::render('ProductManager', compact('p'));
+})->name('product-manager');
+
+Route::get('/product/create', function () {
+    return Inertia::render('ProductForm');
+})->name('product.create');
+
+Route::get('/product/{id}/edit', function ($id) {
+    $product = Product::findOrFail($id);
+    return Inertia::render('ProductForm', compact('product'));
+})->name('product.edit');
 
 
 
