@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void {
-        Schema::create('popstores_product', function (Blueprint $table) {
+        Schema::create('popstore_products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');
@@ -19,7 +19,7 @@ return new class extends Migration {
     }
 
     public function down(): void {
-        Schema::dropIfExists('popstores_product');
+        Schema::dropIfExists('popstore_products');
     }
 };
 

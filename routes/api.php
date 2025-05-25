@@ -16,3 +16,8 @@ Route::get('/user', function (Request $request) {
 //});
 
 Route::apiResource('/product', ProductController::class);
+
+use App\Http\Controllers\Api\PopstoreProductController;
+
+Route::get('/popstore-products', [PopstoreProductController::class, 'index']);
+

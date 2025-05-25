@@ -84,8 +84,8 @@ Route::get('/product-others', function () {
 })->name('product-others');
 
 Route::get('/popstore_product', function () {
-    $popstores = PopstoreProduct::all();
-    return Inertia::render('popstoreList', compact('popstores_product') );
+    $popstores_product = PopstoreProduct::all();
+    return Inertia::render('popstore_product', compact('popstores_product') );
 })->name('popstore_product');
 
 
@@ -102,6 +102,8 @@ Route::get('/product/{id}/edit', function ($id) {
     $product = Product::findOrFail($id);
     return Inertia::render('ProductForm', compact('product'));
 })->name('product.edit');
+
+
 
 
 
