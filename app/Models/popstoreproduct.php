@@ -6,4 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PopstoreProduct extends Model {
     protected $fillable = ['name', 'description', 'price', 'stock', 'category'];
+    protected $table = 'popstore_products';
 }
+

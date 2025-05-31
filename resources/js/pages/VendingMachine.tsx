@@ -187,4 +187,4 @@ export default function VendingMachine() {
       </CardContent>
     </Card>
   );
-}
+} 

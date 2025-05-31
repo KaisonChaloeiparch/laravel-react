@@ -2,6 +2,7 @@
 
 use App\Models\customer;
 use App\Models\popstore;
+use App\Models\Popstore_Product;
 use App\Models\PopstoreProduct;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
