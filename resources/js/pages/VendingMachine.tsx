@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Mock user data
-const users = [
-  { username: "admin", password: "1234", isAdmin: true },
-  { username: "user", password: "abcd", isAdmin: false },
-];
-
 type State =
   | "IDLE"
   | "WAITING_FOR_SELECTION"
@@ -27,25 +21,13 @@ export default function VendingMachine() {
   const [credit, setCredit] = useState(0);
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [change, setChange] = useState(0);
-  const [items, setItems] = useState<Item[]>([ 
+  const [items, setItems] = useState<Item[]>([
     { name: "Coke", price: 20, stock: 2 },
     { name: "Water", price: 10, stock: 2 },
     { name: "Snack", price: 15, stock: 2 },
   ]);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [currentUser, setCurrentUser] = useState<{ username: string; isAdmin: boolean } | null>(null);
   const [history, setHistory] = useState<{ item: string; price: number; time: string }[]>([]);
-
   const [newItem, setNewItem] = useState({ name: "", price: 0, stock: 0 });
-
-  const login = () => {
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) setCurrentUser({ username: user.username, isAdmin: user.isAdmin });
-    else alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
-  };
 
   const insertCoin = (amount: number) => {
     setCredit((prev) => prev + amount);
@@ -86,11 +68,14 @@ export default function VendingMachine() {
       )
     );
 
-    setHistory((prev) => [...prev, {
-      item: item.name,
-      price: item.price,
-      time: new Date().toLocaleString()
-    }]);
+    setHistory((prev) => [
+      ...prev,
+      {
+        item: item.name,
+        price: item.price,
+        time: new Date().toLocaleString(),
+      },
+    ]);
 
     setTimeout(() => {
       setChange(remainingCredit);
@@ -113,24 +98,10 @@ export default function VendingMachine() {
     setNewItem({ name: "", price: 0, stock: 0 });
   };
 
-  if (!currentUser) {
-    return (
-      <Card className="max-w-md mx-auto mt-10 p-4">
-        <CardContent>
-          <h2 className="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
-          <input placeholder="ชื่อผู้ใช้" value={username} onChange={(e) => setUsername(e.target.value)} className="mb-2 w-full border p-2" />
-          <input placeholder="รหัสผ่าน" type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mb-2 w-full border p-2" />
-          <Button onClick={login}>เข้าสู่ระบบ</Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
     <Card className="w-full max-w-md mx-auto mt-8 p-4 shadow-xl rounded-2xl">
       <CardContent>
         <h2 className="text-xl font-bold mb-2">Vending Machine</h2>
-        <p className="mb-2">ยินดีต้อนรับ: <strong>{currentUser.username}</strong></p>
         <p className="mb-2">State: <strong>{state}</strong></p>
         <p className="mb-2">Credit: {credit} บาท</p>
         {selectedItem && <p className="mb-2">Selected: {selectedItem.name}</p>}
@@ -166,15 +137,30 @@ export default function VendingMachine() {
           <p className="mt-4 text-red-600">สินค้าที่เลือกหมดแล้ว!</p>
         )}
 
-        {currentUser.isAdmin && (
-          <div className="mt-6">
-            <h3 className="font-bold mb-2">เพิ่มสินค้าใหม่</h3>
-            <input className="border p-1 mb-1 w-full" placeholder="ชื่อสินค้า" value={newItem.name} onChange={(e) => setNewItem({ ...newItem, name: e.target.value })} />
-            <input className="border p-1 mb-1 w-full" placeholder="ราคา" type="number" value={newItem.price} onChange={(e) => setNewItem({ ...newItem, price: Number(e.target.value) })} />
-            <input className="border p-1 mb-1 w-full" placeholder="จำนวน" type="number" value={newItem.stock} onChange={(e) => setNewItem({ ...newItem, stock: Number(e.target.value) })} />
-            <Button onClick={addItem}>เพิ่มสินค้า</Button>
-          </div>
-        )}
+        <div className="mt-6">
+          <h3 className="font-bold mb-2">เพิ่มสินค้าใหม่</h3>
+          <input
+            className="border p-1 mb-1 w-full"
+            placeholder="ชื่อสินค้า"
+            value={newItem.name}
+            onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+          />
+          <input
+            className="border p-1 mb-1 w-full"
+            placeholder="ราคา"
+            type="number"
+            value={newItem.price}
+            onChange={(e) => setNewItem({ ...newItem, price: Number(e.target.value) })}
+          />
+          <input
+            className="border p-1 mb-1 w-full"
+            placeholder="จำนวน"
+            type="number"
+            value={newItem.stock}
+            onChange={(e) => setNewItem({ ...newItem, stock: Number(e.target.value) })}
+          />
+          <Button onClick={addItem}>เพิ่มสินค้า</Button>
+        </div>
 
         <div className="mt-6">
           <h3 className="font-bold mb-2">ประวัติการซื้อ</h3>
@@ -187,4 +173,4 @@ export default function VendingMachine() {
       </CardContent>
     </Card>
   );
-} 
+}
