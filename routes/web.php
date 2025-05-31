@@ -104,6 +104,13 @@ Route::get('/product/{id}/edit', function ($id) {
     return Inertia::render('ProductForm', compact('product'));
 })->name('product.edit');
 
+// routes/web.php
+
+
+Route::get('/product01', function () {
+    return Inertia::render('Product01Page');
+});
+
 
 
 

@@ -21,3 +21,8 @@ use App\Http\Controllers\Api\PopstoreProductController;
 
 Route::get('/popstore-products', [PopstoreProductController::class, 'index']);
 
+// routes/api.php
+use App\Http\Controllers\Product01Controller;
+
+Route::get('/product01', [Product01Controller::class, 'index']);
+
