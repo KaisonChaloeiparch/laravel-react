@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PopstoreProduct extends Model {
     protected $fillable = ['name', 'description', 'price', 'stock', 'category'];
 
-    //popstore//
-    //kaison//
-    //poppy//
     
 }
 
