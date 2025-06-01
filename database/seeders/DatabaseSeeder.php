@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        //เพิ่มขึนมา//
-        $this->call(PopstoreProductSeeder::class);
+        $this->call(PopstoreProductsSeeder::class);
+
 
         User::factory()->create([
             'name' => 'Test User',
