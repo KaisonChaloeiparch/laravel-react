@@ -2,7 +2,6 @@
 
 use App\Models\PopstoreProduct;
 use App\Models\Product;
-use App\Models\Product01;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -101,14 +100,6 @@ Route::get('/product/{id}/edit', function ($id) {
     $product = Product::findOrFail($id);
     return Inertia::render('ProductForm', compact('product'));
 })->name('product.edit');
-
-// routes/web.php
-
-
-Route::get('/product01', function () {
-    $product01 = Product01::all();
-    return Inertia::render('Product01Page');
-})->name('product01');
 
 
 
