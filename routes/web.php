@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\customer;
-use App\Models\popstore;
-use App\Models\Popstore_Product;
 use App\Models\PopstoreProduct;
 use App\Models\Product;
+use App\Models\Product01;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -108,6 +106,7 @@ Route::get('/product/{id}/edit', function ($id) {
 
 
 Route::get('/product01', function () {
+    $product01 = Product01::all();
     return Inertia::render('Product01Page');
 });
 
