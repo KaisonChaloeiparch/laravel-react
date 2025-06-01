@@ -108,7 +108,8 @@ Route::get('/product/{id}/edit', function ($id) {
 Route::get('/product01', function () {
     $product01 = Product01::all();
     return Inertia::render('Product01Page');
-});
+})->name('product01');
+
 
 
 
