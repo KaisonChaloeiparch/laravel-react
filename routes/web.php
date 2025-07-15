@@ -101,8 +101,12 @@ Route::get('/product/{id}/edit', function ($id) {
     return Inertia::render('ProductForm', compact('product'));
 })->name('product.edit');
 
+use App\Http\Controllers\EmployeeController;
 
-
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+Route::post('/employees', [EmployeeController::class, 'store']);
+Route::put('/employees/{employee}', [EmployeeController::class, 'update']);
+Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy']);
 
 
 

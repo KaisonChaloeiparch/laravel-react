@@ -62,6 +62,16 @@ return [
 
     ],
 
+    //เพิ่มขึ้นมาใหม่//
+
+    'public' => [
+    'driver' => 'local',
+    'root' => storage_path('app/public'),
+    'url' => env('APP_URL') . '/storage',
+    'visibility' => 'public',
+    ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Symbolic Links
@@ -78,3 +88,5 @@ return [
     ],
 
 ];
+
+
